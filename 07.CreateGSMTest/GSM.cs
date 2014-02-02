@@ -9,6 +9,7 @@ namespace _07.CreateGSMTest
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using System.Text;
     
     public class GSM
@@ -77,22 +78,41 @@ namespace _07.CreateGSMTest
 
         Display newDisplay = new Display(5.55, 16000000);
 
+        //STANDARD WAY
+        //public override string ToString()
+        //{
+        //    StringBuilder sb = new StringBuilder();
+
+        //    sb.AppendLine("Model: " + this.Model);
+        //    sb.AppendLine("Manufacturer: " + this.Manufacturer);
+        //    sb.AppendLine("Price: " + this.Price + "lv");
+        //    sb.AppendLine("Owner: " + this.Owner);
+        //    sb.AppendLine("Battery model: " + newBattery.Model);
+        //    sb.AppendLine("Battery type: " + newBattery.Type);
+        //    sb.AppendLine("Hours idle: " + newBattery.HoursIdle);
+        //    sb.AppendLine("Hours talk: " + newBattery.HoursTalk);
+        //    sb.AppendLine("Display size: " + newDisplay.Size);
+        //    sb.AppendLine("Display colors: " + newDisplay.NumberOfColors);
+
+        //    return sb.ToString();
+        //}
+
+        //REFLECTION
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var result = new StringBuilder();
 
-            sb.AppendLine("Model: " + this.Model);
-            sb.AppendLine("Manufacturer: " + this.Manufacturer);
-            sb.AppendLine("Price: " + this.Price + "lv");
-            sb.AppendLine("Owner: " + this.Owner);
-            sb.AppendLine("Battery model: " + newBattery.Model);
-            sb.AppendLine("Battery type: " + newBattery.Type);
-            sb.AppendLine("Hours idle: " + newBattery.HoursIdle);
-            sb.AppendLine("Hours talk: " + newBattery.HoursTalk);
-            sb.AppendLine("Display size: " + newDisplay.Size);
-            sb.AppendLine("Display colors: " + newDisplay.NumberOfColors);
+            var properties = this.GetType().GetProperties();
 
-            return sb.ToString();
+            foreach (var property in properties)
+            {
+                if (property.GetValue(this, null) != null)
+                {
+                    result.AppendFormat("{0}: {1}; ", property.Name, property.GetValue(this, null));    
+                }
+            }
+
+            return result.ToString();
         }
 
         //Start Exercise 10

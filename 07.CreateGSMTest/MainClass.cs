@@ -20,7 +20,7 @@ namespace _07.CreateGSMTest
     class MainClass
     {
         static void Main()
-        {
+        {   
             GSMTest gsmTest = new GSMTest();
             gsmTest.AddGsmInTheList();
             gsmTest.PrintAllGSMs();

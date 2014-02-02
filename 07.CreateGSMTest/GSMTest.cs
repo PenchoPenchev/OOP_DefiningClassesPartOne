@@ -31,11 +31,14 @@ namespace _07.CreateGSMTest
         {
             foreach (var gsm in GsmList)
             {
-                Console.Write(gsm.Model + ", ");
-                Console.Write(gsm.Manufacturer + ", ");
-                Console.Write(gsm.Price + ", ");
-                Console.Write(gsm.Owner);
-                Console.WriteLine();
+                //Console.Write(gsm.Model + ", ");
+                //Console.Write(gsm.Manufacturer + ", ");
+                //Console.Write(gsm.Price + ", ");
+                //Console.Write(gsm.Owner);
+                //Console.WriteLine();
+
+                //Using override ToString method with Reflection
+                Console.WriteLine(gsm.ToString());
             }
         }
     }
