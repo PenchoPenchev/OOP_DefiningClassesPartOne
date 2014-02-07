@@ -15,7 +15,6 @@
  * Ensure all fields hold correct data at any given time.*/
 
 /*6. Add a static field and a property IPhone4S in the GSM class to hold the information about iPhone 4S.*/
-//just to test github
 
 namespace _01.DefineClassesGSM_Battery_Display
 {
